@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ProjetAndroid</string>
+    <string name="title">Welcome in our app</string>
+    <string name="searchCity">Search a city</string>
+    <string name="search">Search</string>
+    <string name="viewWeather">Weather research</string>
+    <string name="enterCity">City Name</string>
+    <string name="returnInfo">Return Informations</string>
+    <string name="nameCity">City name</string>
+    <string name="postCode">Post code</string>
+    <string name="population">Population</string>
+    <string name="departement">Department</string>
+    <string name="region">Region</string>
+</resources>
