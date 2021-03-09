@@ -54,11 +54,11 @@ public class CityActivity extends Activity {
             Log.d("Debug","Connected to internet");
 
             String url = "https://geo.api.gouv.fr/";
-            String fields = "&fields=nom,code,codesPostaux,codeDepartement,departement,codeRegion,region";
+            String fields = "&fields=nom,code,codesPostaux,codeDepartement,departement,codeRegion,region,population";
             String format = "&format=json";
             String geometry = "&geometry=centre";
 
-            url += "coommunes?nom=" + input + fields + format + geometry;
+            url += "communes?nom=" + input + fields + format + geometry;
 
             Log.d("Debug", "URL is " + url);
 
@@ -80,12 +80,12 @@ public class CityActivity extends Activity {
 
                                     city = new City(jsonItem.getInt("code"),
                                             jsonItem.getString("nom"),
-                                            jsonItem.getInt("codePostaux"),
+                                            jsonItem.getJSONArray("codesPostaux").optInt(0),
                                             jsonItem.getInt("population"),
                                             jsonItem.getInt("codeDepartement"),
-                                            jsonItem.getString("departement.nom"),
-                                            jsonItem.getInt("region.code"),
-                                            jsonItem.getString("region.nom"));
+                                            jsonItem.getJSONObject("departement").getString("nom"),
+                                            jsonItem.getJSONObject("region").getInt("code"),
+                                            jsonItem.getJSONObject("region").getString("nom"));
                                     cities.add(city);
                                 }
 

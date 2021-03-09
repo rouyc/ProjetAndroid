@@ -1,6 +1,8 @@
 package com.example.projetandroid.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,20 +48,21 @@ public class AdapterForCities extends BaseAdapter
 
         TextView postCode = (TextView) itemView.findViewById(R.id.postCode);
         TextView nameVille = (TextView) itemView.findViewById(R.id.nameVille);
+        TextView populationVille = (TextView) itemView.findViewById(R.id.populationNameVille);
 
         ImageView imageDepartment = (ImageView) itemView.findViewById(R.id.imageDepartment);
-        TextView nameDepartment = (TextView) itemView.findViewById(R.id.postCode);
-        TextView numDepartment = (TextView) itemView.findViewById(R.id.nameVille);
-
+         TextView nameDepartment = (TextView) itemView.findViewById(R.id.nameDepartment);
+         TextView numDepartment = (TextView) itemView.findViewById(R.id.numDepartment);
         ImageView numRegion = (ImageView) itemView.findViewById(R.id.numRegion);
         TextView nameRegion = (TextView) itemView.findViewById(R.id.nameRegion);
-
-        postCode.setText(this.cities.get(position).getPostCode());
+        Log.d("Debug","" + this.cities.get(position).getPostCode());
+        postCode.setText(this.cities.get(position).getPostCode()+"");
         nameVille.setText(this.cities.get(position).getName());
+        populationVille.setText(this.cities.get(position).getPopulation()+"");
 
         //ImageLoader.getInstance().displayImage(this.cities.get(position).getThumbnail(), gameImage);
         nameDepartment.setText(this.cities.get(position).getNameDepartment());
-        numDepartment.setText(this.cities.get(position).getNumDepartment());
+        numDepartment.setText(this.cities.get(position).getNumDepartment()+"");
 
         //ImageLoader.getInstance().displayImage(this.cities.get(position).getThumbnail(), gameImage);
         nameRegion.setText(this.cities.get(position).getNameRegion());

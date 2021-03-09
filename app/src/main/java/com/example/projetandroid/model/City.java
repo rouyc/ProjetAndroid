@@ -1,5 +1,11 @@
 package com.example.projetandroid.model;
 
+import android.util.JsonReader;
+
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+
 public class City {
 
     private int id;
