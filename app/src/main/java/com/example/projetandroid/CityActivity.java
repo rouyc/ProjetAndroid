@@ -78,11 +78,11 @@ public class CityActivity extends Activity {
                                 {
                                     jsonItem = listOfGames.getJSONObject(i);
 
-                                    city = new City(jsonItem.getInt("code"),
+                                    city = new City(jsonItem.getString("code"),
                                             jsonItem.getString("nom"),
                                             jsonItem.getJSONArray("codesPostaux").optInt(0),
                                             jsonItem.getInt("population"),
-                                            jsonItem.getInt("codeDepartement"),
+                                            jsonItem.getString("codeDepartement"),
                                             jsonItem.getJSONObject("departement").getString("nom"),
                                             jsonItem.getJSONObject("region").getInt("code"),
                                             jsonItem.getJSONObject("region").getString("nom"));

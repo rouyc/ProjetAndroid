@@ -1,6 +1,5 @@
 package com.example.projetandroid.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.projetandroid.R;
 import com.example.projetandroid.model.City;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -39,8 +37,9 @@ public class AdapterForCities extends BaseAdapter
 
     @Override
     public long getItemId(int position) {
-        return this.cities.get(position).getId();
+        return 0;
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -62,7 +61,7 @@ public class AdapterForCities extends BaseAdapter
 
         //ImageLoader.getInstance().displayImage(this.cities.get(position).getThumbnail(), gameImage);
         nameDepartment.setText(this.cities.get(position).getNameDepartment());
-        numDepartment.setText(this.cities.get(position).getNumDepartment()+"");
+        numDepartment.setText(this.cities.get(position).getNumDepartment());
 
         //ImageLoader.getInstance().displayImage(this.cities.get(position).getThumbnail(), gameImage);
         nameRegion.setText(this.cities.get(position).getNameRegion());

@@ -8,16 +8,16 @@ import org.json.JSONArray;
 
 public class City {
 
-    private int id;
+    private String id;
     private String name;
     private int postCode;
     private int population;
-    private int numDepartment;
+    private String numDepartment;
     private String nameDepartment;
     private int numRegion;
     private String nameRegion;
 
-    public City(int id, String name, int postCode, int population, int numDepartment, String nameDepartment, int numRegion, String nameRegion) {
+    public City(String id, String name, int postCode, int population, String numDepartment, String nameDepartment, int numRegion, String nameRegion) {
         this.id = id;
         this.name = name;
         this.postCode = postCode;
@@ -28,9 +28,9 @@ public class City {
         this.nameRegion = nameRegion;
     }
 
-    public int getId() { return id; }
+    public String getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(String id) { this.id = id; }
 
     public String getName() {
         return name;
@@ -56,11 +56,11 @@ public class City {
         this.population = population;
     }
 
-    public int getNumDepartment() {
+    public String getNumDepartment() {
         return numDepartment;
     }
 
-    public void setNumDepartment(int numDepartment) {
+    public void setNumDepartment(String numDepartment) {
         this.numDepartment = numDepartment;
     }
 
