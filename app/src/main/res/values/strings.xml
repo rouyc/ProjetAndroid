@@ -12,4 +12,6 @@
     <string name="departement">Department</string>
     <string name="region">Region</string>
     <string name="meteoBtn">Météo</string>
+    <string name="tempText">Température : %1$s °C</string>
+    <string name="windSpeed">Vitesse du vent : %1$s km/h</string>
 </resources>

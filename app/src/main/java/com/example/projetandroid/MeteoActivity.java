@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,6 +24,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.projetandroid.adapter.AdapterForCities;
 import com.example.projetandroid.model.City;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,9 +42,11 @@ public class MeteoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         Log.d("Debug", "MeteoActivity");
 
-//TODO        setContentView(R.layout.);
+        setContentView(R.layout.meteo_activity);
+
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -63,6 +71,27 @@ public class MeteoActivity extends Activity {
 
                             try {
                                 JSONObject jsonItem = new JSONObject(response);
+
+                                TextView nomVille = findViewById(R.id.nomVille);
+                                nomVille.setText(jsonItem.getString("name"));
+
+                                TextView descMeteo = findViewById(R.id.descMeteo);
+                                descMeteo.setText(jsonItem.getJSONArray("weather").optJSONObject(0).getString("description"));
+
+                                TextView temp = findViewById(R.id.temp);
+                                temp.setText(String.format(getString(R.string.tempText), jsonItem.getJSONObject("main").getString("temp"))  );
+
+                                TextView vent = findViewById(R.id.vent);
+                                vent.setText(String.format(getString(R.string.windSpeed), jsonItem.getJSONObject("wind").getString("speed")));
+
+
+
+                                ImageView imageMeteo = findViewById(R.id.imageMeteo);
+                                Log.d("Debug", "http://openweathermap.org/img/wn/" +jsonItem.getJSONArray("weather").optJSONObject(0).getString("icon")+".png");
+                                Uri uri = Uri.parse("http://openweathermap.org/img/wn/01d.png");
+                                SimpleDraweeView draweeView = (SimpleDraweeView) imageMeteo;
+                                draweeView.setImageURI(uri);
+
 
                             } catch (JSONException e) {
                                 Log.e("Debug", "Error while parsing games result", e);
