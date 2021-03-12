@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
@@ -10,7 +11,7 @@
     <LinearLayout
         android:id="@+id/cityInformation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -22,25 +23,39 @@
             android:src="@drawable/city"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/postCode"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/nameVille"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/populationNameVille"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content">
+
+            <Button
+                android:id="@+id/button1Meteo"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="@string/meteoBtn"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+
         </LinearLayout>
     </LinearLayout>
 <LinearLayout
@@ -52,7 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
         <ImageView
             android:id="@+id/numRegion"
@@ -66,7 +82,8 @@
         <TextView
             android:id="@+id/nameRegion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 
     <LinearLayout

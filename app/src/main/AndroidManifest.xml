@@ -23,5 +23,7 @@
         </activity>
         <activity android:name=".CityActivity">
         </activity>
+        <activity android:name=".MeteoActivity">
+        </activity>
     </application>
 </manifest>

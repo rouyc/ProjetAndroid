@@ -8,8 +8,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +22,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.projetandroid.adapter.AdapterForCities;
 import com.example.projetandroid.model.City;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,19 +29,16 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityActivity extends Activity {
+public class MeteoActivity extends Activity {
 
-    public static final String INPUT_PARAMETER = "input_parameter";
-
-    public static final int RESULT_OK = 0;
-    public static final int RESULT_KO = 1;
+    public static final String INPUT_PARAMETER = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_city);
+        Log.d("Debug", "MeteoActivity");
 
-        List<City> cities = new ArrayList<>(0);
+//TODO        setContentView(R.layout.);
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -53,13 +49,9 @@ public class CityActivity extends Activity {
 
         if (networkInfo != null && networkInfo.isConnected()) {
             Log.d("Debug", "Connected to internet");
+            String url = "https://api.openweathermap.org/data/2.5/weather";
+            url += "?zip="+input+",fr&appid=eedf0a01e8ded220beec409e4f82a73b&units=metric&lang=fr";
 
-            String url = "https://geo.api.gouv.fr/";
-            String fields = "&fields=nom,code,codesPostaux,codeDepartement,departement,codeRegion,region,population";
-            String format = "&format=json";
-            String geometry = "&geometry=centre";
-
-            url += "communes?nom=" + input + fields + format + geometry;
 
             Log.d("Debug", "URL is " + url);
 
@@ -67,30 +59,10 @@ public class CityActivity extends Activity {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.d("Debug", "IUT Response" + response);
+                            Log.d("Debug", "Meteo Response" + response);
 
                             try {
-                                JSONArray listOfGames = new JSONArray(response);
-
-                                JSONObject jsonItem;
-                                City city;
-                                for (int i = 0; i < listOfGames.length(); i++) {
-                                    jsonItem = listOfGames.getJSONObject(i);
-
-                                    city = new City(jsonItem.getString("code"),
-                                            jsonItem.getString("nom"),
-                                            jsonItem.getJSONArray("codesPostaux").optInt(0),
-                                            jsonItem.getInt("population"),
-                                            jsonItem.getString("codeDepartement"),
-                                            jsonItem.getJSONObject("departement").getString("nom"),
-                                            jsonItem.getJSONObject("region").getInt("code"),
-                                            jsonItem.getJSONObject("region").getString("nom"));
-                                    cities.add(city);
-                                }
-
-                                ListView listView = (ListView) findViewById(R.id.listView);
-                                AdapterForCities adapterForCities = new AdapterForCities(CityActivity.this, cities);
-                                listView.setAdapter(adapterForCities);
+                                JSONObject jsonItem = new JSONObject(response);
 
                             } catch (JSONException e) {
                                 Log.e("Debug", "Error while parsing games result", e);
@@ -110,7 +82,7 @@ public class CityActivity extends Activity {
             finish();
         }
 
-
-
     }
+
+
 }

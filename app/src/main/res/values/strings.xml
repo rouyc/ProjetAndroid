@@ -11,4 +11,5 @@
     <string name="population">Population</string>
     <string name="departement">Department</string>
     <string name="region">Region</string>
+    <string name="meteoBtn">Météo</string>
 </resources>
