@@ -1,23 +1,17 @@
 package com.example.projetandroid.model;
 
-import android.util.JsonReader;
-
-import com.android.volley.toolbox.JsonArrayRequest;
-
-import org.json.JSONArray;
-
 public class City {
 
     private String id;
     private String name;
     private int postCode;
-    private int population;
+    private String population;
     private String numDepartment;
     private String nameDepartment;
-    private int numRegion;
+    private String numRegion;
     private String nameRegion;
 
-    public City(String id, String name, int postCode, int population, String numDepartment, String nameDepartment, int numRegion, String nameRegion) {
+    public City(String id, String name, int postCode, String population, String numDepartment, String nameDepartment, String numRegion, String nameRegion) {
         this.id = id;
         this.name = name;
         this.postCode = postCode;
@@ -48,11 +42,11 @@ public class City {
         this.postCode = postCode;
     }
 
-    public int getPopulation() {
+    public String getPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(String population) {
         this.population = population;
     }
 
@@ -72,9 +66,9 @@ public class City {
         this.nameDepartment = nameDepartment;
     }
 
-    public int getNumRegion() { return numRegion; }
+    public String getNumRegion() { return numRegion; }
 
-    public void setNumRegion(int numRegion) { this.numRegion = numRegion; }
+    public void setNumRegion(String numRegion) { this.numRegion = numRegion; }
 
     public String getNameRegion() {
         return nameRegion;

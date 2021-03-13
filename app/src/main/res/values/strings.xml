@@ -3,15 +3,17 @@
     <string name="title">Welcome in our app</string>
     <string name="searchCity">Search a city</string>
     <string name="search">Search</string>
-    <string name="viewWeather">Weather research</string>
     <string name="enterCity">City Name</string>
-    <string name="returnInfo">Return Informations</string>
     <string name="nameCity">City name</string>
     <string name="postCode">Post code</string>
     <string name="population">Population</string>
     <string name="departement">Department</string>
     <string name="region">Region</string>
-    <string name="meteoBtn">Météo</string>
-    <string name="tempText">Température : %1$s °C</string>
-    <string name="windSpeed">Vitesse du vent : %1$s km/h</string>
+    <string name="meteoBtn">Weather</string>
+    <string name="tempText">Temperature : %1$s °C</string>
+    <string name="windSpeed">Wind Speed : %1$s km/h</string>
+    <string name="populationLayout">Population : %1$s</string>
+    <string name="zoneGeo">Zone : %1$s</string>
+    <string name="departmentCode">Department code</string>
+    <string name="weather">Wheater</string>
 </resources>

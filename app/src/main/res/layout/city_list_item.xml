@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     android:orientation="vertical"
     android:paddingBottom="15dp"
     android:layout_margin="10dp">
@@ -13,14 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:adjustViewBounds="true"
             android:layout_margin="5dp"
-            android:src="@drawable/city"/>
+            android:adjustViewBounds="true"
+            android:src="@drawable/city" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,27 +30,31 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/postCode"
+                android:id="@+id/nameVile"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="@string/nameCity"/>
 
             <TextView
-                android:id="@+id/nameVille"
+                android:id="@+id/postCode"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="@string/postCode"/>
 
             <TextView
                 android:id="@+id/populationNameVille"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="@string/population"/>
         </LinearLayout>
+
         <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/button1Meteo"
-                android:layout_width="75dp"
+                android:id="@+id/buttonMeteo"
+                android:layout_width="90dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:text="@string/meteoBtn"
@@ -58,64 +63,68 @@
 
         </LinearLayout>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        >
-
-        <ImageView
-            android:id="@+id/numRegion"
-            android:layout_width="wrap_content"
-            android:layout_height="75dp"
-            android:layout_margin="5dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/dep93"
-            />
-
-        <TextView
-            android:id="@+id/nameRegion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageDepartment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/dep" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/numRegion"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/reg84"/>
 
             <TextView
-                android:id="@+id/nameDepartment"
+                android:id="@+id/nameRegion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/region"/>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/numDepartment"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageDepartment"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_margin="5dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/dep01" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/departement"/>
+
+                <TextView
+                    android:id="@+id/numDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/departmentCode"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
-
 </LinearLayout>

@@ -2,14 +2,10 @@ package com.example.projetandroid;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +18,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.projetandroid.adapter.AdapterForCities;
 import com.example.projetandroid.model.City;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,9 +28,6 @@ import java.util.List;
 public class CityActivity extends Activity {
 
     public static final String INPUT_PARAMETER = "input_parameter";
-
-    public static final int RESULT_OK = 0;
-    public static final int RESULT_KO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,20 +62,20 @@ public class CityActivity extends Activity {
                             Log.d("Debug", "IUT Response" + response);
 
                             try {
-                                JSONArray listOfGames = new JSONArray(response);
+                                JSONArray listOfCities = new JSONArray(response);
 
                                 JSONObject jsonItem;
                                 City city;
-                                for (int i = 0; i < listOfGames.length(); i++) {
-                                    jsonItem = listOfGames.getJSONObject(i);
+                                for (int i = 0; i < listOfCities.length(); i++) {
+                                    jsonItem = listOfCities.getJSONObject(i);
 
                                     city = new City(jsonItem.getString("code"),
                                             jsonItem.getString("nom"),
                                             jsonItem.getJSONArray("codesPostaux").optInt(0),
-                                            jsonItem.getInt("population"),
+                                            String.format(getString(R.string.populationLayout), jsonItem.getString("population")),
                                             jsonItem.getString("codeDepartement"),
                                             jsonItem.getJSONObject("departement").getString("nom"),
-                                            jsonItem.getJSONObject("region").getInt("code"),
+                                            jsonItem.getJSONObject("region").getString("code"),
                                             jsonItem.getJSONObject("region").getString("nom"));
                                     cities.add(city);
                                 }
@@ -93,7 +85,7 @@ public class CityActivity extends Activity {
                                 listView.setAdapter(adapterForCities);
 
                             } catch (JSONException e) {
-                                Log.e("Debug", "Error while parsing games result", e);
+                                Log.e("Debug", "Error while parsing cities result", e);
                             }
                         }
                     }, new Response.ErrorListener() {

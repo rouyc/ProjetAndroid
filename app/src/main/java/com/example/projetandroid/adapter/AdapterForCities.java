@@ -3,7 +3,6 @@ package com.example.projetandroid.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +15,8 @@ import com.example.projetandroid.MeteoActivity;
 import com.example.projetandroid.R;
 import com.example.projetandroid.model.City;
 
+import java.lang.reflect.Field;
 import java.util.List;
-
-import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class AdapterForCities extends BaseAdapter
 {
@@ -48,34 +46,45 @@ public class AdapterForCities extends BaseAdapter
         return 0;
     }
 
+    public static int getResId(String resName, Class<?> c) {
+
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View itemView = this.layoutInflater.inflate(R.layout.city_list_item, parent, false);
 
         TextView postCode = (TextView) itemView.findViewById(R.id.postCode);
-        TextView nameVille = (TextView) itemView.findViewById(R.id.nameVille);
+        TextView nameVille = (TextView) itemView.findViewById(R.id.nameVile);
         TextView populationVille = (TextView) itemView.findViewById(R.id.populationNameVille);
         int codePostal = this.cities.get(position).getPostCode();
 
-        ImageView imageDepartment = (ImageView) itemView.findViewById(R.id.imageDepartment);
-         TextView nameDepartment = (TextView) itemView.findViewById(R.id.nameDepartment);
-         TextView numDepartment = (TextView) itemView.findViewById(R.id.numDepartment);
-        ImageView numRegion = (ImageView) itemView.findViewById(R.id.numRegion);
-        TextView nameRegion = (TextView) itemView.findViewById(R.id.nameRegion);
-        Log.d("Debug","" + this.cities.get(position).getPostCode());
-        postCode.setText(this.cities.get(position).getPostCode()+"");
+        postCode.setText(this.cities.get(position).getPostCode() + "");
         nameVille.setText(this.cities.get(position).getName());
-        populationVille.setText(this.cities.get(position).getPopulation()+"");
+        populationVille.setText(this.cities.get(position).getPopulation());
 
-        //ImageLoader.getInstance().displayImage(this.cities.get(position).getThumbnail(), gameImage);
+        ImageView imageDepartment = (ImageView) itemView.findViewById(R.id.imageDepartment);
+        TextView nameDepartment = (TextView) itemView.findViewById(R.id.nameDepartment);
+        TextView numDepartment = (TextView) itemView.findViewById(R.id.numDepartment);
+        int idImageDepartement = getResId("dep" + this.cities.get(position).getNumDepartment().toLowerCase(), R.drawable.class);
+        imageDepartment.setImageResource(idImageDepartement);
         nameDepartment.setText(this.cities.get(position).getNameDepartment());
         numDepartment.setText(this.cities.get(position).getNumDepartment());
 
-        //ImageLoader.getInstance().displayImage(this.cities.get(position).getThumbnail(), gameImage);
+        ImageView imageRegion = (ImageView) itemView.findViewById(R.id.numRegion);
+        TextView nameRegion = (TextView) itemView.findViewById(R.id.nameRegion);
+        int idImageRegion = getResId("reg" + this.cities.get(position).getNumRegion().toLowerCase(), R.drawable.class);
+        imageRegion.setImageResource(idImageRegion);
         nameRegion.setText(this.cities.get(position).getNameRegion());
 
-        Button buttonCity = (Button) itemView.findViewById(R.id.button1Meteo);
+        Button buttonCity = (Button) itemView.findViewById(R.id.buttonMeteo);
 
         buttonCity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,4 +102,3 @@ public class AdapterForCities extends BaseAdapter
         return itemView;
     }
 }
-

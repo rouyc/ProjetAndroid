@@ -4,12 +4,17 @@
     <string name="title">Bienvenue sur notre appli</string>
     <string name="searchCity">Rechercher une ville</string>
     <string name="search">Rechercher</string>
-    <string name="viewWeather">Rechercher la météo</string>
     <string name="enterCity">Nom de la ville</string>
-    <string name="returnInfo">Information souhaités en retour</string>
     <string name="nameCity">Nom ville</string>
     <string name="postCode">Code postal</string>
     <string name="population">Population</string>
     <string name="departement">Departement</string>
     <string name="region">Region</string>
+    <string name="meteoBtn">Météo</string>
+    <string name="tempText">Température : %1$s °C</string>
+    <string name="windSpeed">Wind Speed : %1$s km/h</string>
+    <string name="populationLayout">Population : %1$s</string>
+    <string name="zoneGeo">Zone : %1$s</string>
+    <string name="departmentCode">Departement code</string>
+    <string name="weather">Météo</string>
 </resources>
